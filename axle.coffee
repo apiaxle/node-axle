@@ -33,7 +33,7 @@ class Client
 
     request options, ( err, res ) =>
       return cb err if err
-
+        
       # the response contains meta and the actual results
       { meta, results } = res.body
       return cb new Error res.body if not meta
@@ -70,6 +70,9 @@ class exports.V1 extends Client
 
   createKey:( name, options={}, cb ) ->
     @request "/v1/key/#{ name }", { method: "POST", body: options, options }, cb
+
+  linkKey: (api, key, options={}, cb ) ->
+    @request "/v1/api/#{ api }/linkkey/#{ key }", { method: "PUT", body: options, options }, cb
 
   getApis: ( options={}, cb ) ->
     @request "/v1/apis", { query_params: options }, cb
