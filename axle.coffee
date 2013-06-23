@@ -65,6 +65,9 @@ class exports.V1 extends Client
   updateApi: ( name, options={}, cb ) ->
     @request "/v1/api/#{ name }", { method: "PUT", body: options, options }, cb
 
+  createApi:( name, options={}, cb ) ->
+    @request "/v1/api/#{ name }", { method: "POST", body: options, options }, cb
+
   updateKey: ( name, options={}, cb ) ->
     @request "/v1/key/#{ name }", { method: "PUT", body: options, options }, cb
 
